@@ -42,14 +42,11 @@ Esta práctica implementa tres bloques, con utilidades propias cuando el enuncia
 
 ```
 .
-├─ src/
-│  ├─ NumericalSeries.hs   -- expSeries, cosSeries, ln1pSeries + auxiliares
-│  ├─ RemData.hs           -- remData y helpers (min2, max2, enRangoCerrado)
-│  ├─ OrderDesc.hs         -- insertDesc, orderDesc
-│  ├─ DCT.hs               -- dct y auxiliares (coefA, terminoDCT, raizCuadrada, miPi)
-│  └─ Main.hs              -- demo mínima (imprime DCT de [1..10])
-├─ README.md               -- este reporte
-└─ stack.yaml / cabal.project  (opcional)
+├─ FunExpCosLn.hs                -- Aproximación de e^x, cos(x), ln(1+x) con series
+├─ RemData.hs                     -- Función remData y auxiliares para filtrar intervalos
+├─ TransformacionDirectaCoseno.hs -- Implementación de la DCT (con raizCuadrada, miPi, etc.)
+├─ order_asc.hs                   -- Ordenamiento por inserción (ascendente/descendente)
+├─ README.md                      -- Reporte de la práctica
 ```
 
 ---
@@ -59,14 +56,15 @@ Esta práctica implementa tres bloques, con utilidades propias cuando el enuncia
 Con **GHC** instalado:
 
 ```bash
-# Compilar binario de demo (usa Main)
-ghc -O2 -Wall -i./src -main-is Main src/Main.hs -o dct_demo
-./dct_demo
+# Compilar un archivo específico
+# Ejemplo: FunExpCosLn.hs en GHCi
+ghci FunExpCosLn.hs
 
-# En GHCi (interactivo)
-ghci -i./src
-:load Main
--- ejemplos rápidos:
+# Dentro de GHCi puedes cargar y probar
+:load FunExpCosLn
+expSeries 1.5 6
+
+:load TransformacionDirectaCoseno
 dct [1..10]
 ```
 
@@ -194,7 +192,8 @@ Entrada `x = [1..10]` produce (redondeado):
 
 * **Compilador:** GHC 9.x
 * **SO:** Windows / macOS / Linux
-* **Ejecución rápida:** `ghci -i./src` y evaluar ejemplos de las secciones 4 y 5.
+* **Ejecución rápida:** `ghci <archivo>.hs` y evaluar ejemplos de las secciones 4 y 5.
 
 ---
+
 
